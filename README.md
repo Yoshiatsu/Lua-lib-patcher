@@ -103,7 +103,7 @@ local Patcher = require("Patcher")
 if you want to use old version you will need to download it frpm the [releases](https://github.com/maarsalien/patcher/releases)
 
 ```lua
-local Patcher = pcall(load(gg.makeRequest("https://pastebin.com/raw/wz1sfmWF").content))
+local _, Patcher = pcall(load(gg.makeRequest("https://pastebin.com/raw/wz1sfmWF").content))
 ```
 
 ## Examples
