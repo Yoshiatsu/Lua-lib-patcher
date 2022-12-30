@@ -99,8 +99,11 @@ local Patcher = require("Patcher")
 
 ### 2. Import from pastebin
 
+<b>Note:</b> Remote import will provide only the latest version
+if you want to use old version you will need to download it frpm the [releases](https://github.com/maarsalien/patcher/releases)
+
 ```lua
-local Patcher = pcall(load(gg.makeRequest("https://pastebin.com/raw/8XZ5Zj5r").content))
+local Patcher = pcall(load(gg.makeRequest("https://pastebin.com/raw/wz1sfmWF").content))
 ```
 
 ## Examples
