@@ -12,7 +12,7 @@ Patcher.__index = Patcher
 -- [[ DO NOT EDIT BELOW THIS LINE ]]
 Patcher.AUTHOR       = "Maars"
 Patcher.VERSION_CODE = 1
-Patcher.VERSION_NAME = "1.0.0"
+Patcher.VERSION_NAME = "2.0.0"
 
 -- Print all arguments to the console and exit the script
 local function die(...)
@@ -94,6 +94,14 @@ local function checkTargetInfo(target)
       die("This script work only for the ", target.x64 and "64bits" or "32bits", " variant of the game.")
     end
   end
+
+  if target.versionName then
+    if infos.versionName ~= target.versionName then
+      gg.alert("This script work only for the version ", target.versionName)
+      die("This script work only for the version ", target.versionName)
+    end
+  end
+
 end
 
 -- Get the start address in Xa of a library
@@ -152,7 +160,6 @@ end
 
 -- Create a new Patcher object
 function Patcher.new(config)
-
   checkTargetInfo(config.target)
 
   local self      = setmetatable({}, Patcher)
@@ -173,7 +180,7 @@ function Patcher.new(config)
 end
 
 -- Add a new method to the patcher object
-function Patcher:hook(method)
+function Patcher:add(method)
   local config = self.config
 
   local startAddr = (method.libName and getStartAddr(method.libName) or config.startAddr) + (method.offset or 0)
